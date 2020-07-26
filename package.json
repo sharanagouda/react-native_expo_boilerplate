@@ -5,7 +5,22 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint .",
+    "flow": "flow",
+    "flow-stop": "flow stop",
+    "lint:fix": "npm run lint -- --fix",
+    "prepush": "npm run lint && npm run test"
+  },
+  "lint-staged": {
+    "./src/*.{js,jsx}": [
+      "npm run lint:fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.11.0",
